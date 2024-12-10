@@ -1,6 +1,6 @@
 # BioE131FinalProject
-step 1: setup you AWS acount. please refer to the instructions listed on Lab 8 on how to setup your AWS acount. <br> 
-step 2: setup Jbrowse according to the isntructions listed on Lab 8.  <br> 
+step 1: setup you AWS account. please refer to the instructions listed on Lab 8 on how to setup your AWS account. <br> 
+step 2: setup Jbrowse according to the instructions listed on Lab 8.  <br> 
 please verify that JBrowse is installed using the following bash command: --version Jbrowse <br>
 run jbrowse --help to check the following packages and commands are installed <br>
 wget: For downloading genome and annotation files. <br>
