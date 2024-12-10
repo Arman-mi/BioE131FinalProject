@@ -46,6 +46,19 @@ use the following if a SAM format is required : minimap2 -a reference_genome.fas
 
 after setting up follow the following commands to make sure everything is running smoothly 
 
+
+
+to get our first viral genome follow the following bash commands: 
+wget -O viral_genome.fna.gz
+gunzip viral_genome.fna.gz
+samtools faidx viral_genome.fna
+jbrowse add-assembly viral_genome.fna --out $APACHE_ROOT/jbrowse2 --load copy
+
+
+
+
+
+viral genome anotations: 
 wget -O viral_genome_annotations.gff3.gz https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/848/505/GCF_000848505.1_ViralProj14703/GCF_000848505.1_ViralProj14703_genomic.gff.gz 
 gunzip viral_genome_annotations.gff3.gz
 jbrowse sort-gff viral_genome_annotations.gff3 > genes.gff
@@ -111,8 +124,9 @@ jbrowse add-track gca3_sorted.gff.gz --out $APACHE_ROOT/jbrowse2 --load copy --a
 jbrowse text-index --out $APACHE_ROOT/jbrowse2
 
 
-for Genbank
+
 wget -O viral_genome.fna.gz https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/848/505/GCF_000848505.1_ViralProj14703/GCF_000848505.1_ViralProj14703_genomic.fna.gz 
+
 
 
 
