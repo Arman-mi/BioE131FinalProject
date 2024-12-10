@@ -37,10 +37,10 @@ wget -O {Enter the name of your output file} {Enter the download link to your fi
 <br> jbrowse sort-gff {Name of annotation file you just decompressed} > {Output file name.gff}
 
 <br>Step 12:
-<br> bgzip {}
+<br> bgzip {Output file name.gff}
 
 <br>Step 13: 
-<br> tabix {}
+<br> tabix {Output file name.gff}
 
 <br>Step 14: Add the annotations to JBrowse
 <br> jbrowse add-track {Name of compressed file} --out $APACHE_ROOT/jbrowse2 --load copy
@@ -50,9 +50,7 @@ wget -O {Enter the name of your output file} {Enter the download link to your fi
 
 <br>Step 16: Access your JBrowse
 
-###########################################
-Make sure to always call it JBrowse2 instead of JBrowse, go up and fix where this is not the case
-###########################################
+
 
 
 
