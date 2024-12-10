@@ -164,7 +164,7 @@ jbrowse text-index --out $APACHE_ROOT/jbrowse2
 <br> the following instructions assumes you have downloaded the all in one version
 <br> Download the genome data locally to your computer using the following links:
 <br> ftp://hgdownload.soe.ucsc.edu/goldenPath/eboVir3/bigZips/KM034562v1.fa.gz
-<br> ralProj14703/GCF_000848505.1_ViralProj14703_genomic.fna.gz 
+<br> https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/848/505/GCF_000848505.1_ViralProj14703/GCF_000848505.1_ViralProj14703_genomic.fna.gz 
 <br> https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/034/098/425/GCA_034098425.1_ASM3409842v1/GCA_034098425.1_ASM3409842v1_genomic.fna.gz
 <br> https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/900/094/155/GCA_900094155.1_ASM90009415v1/GCA_900094155.1_ASM90009415v1_genomic.fna.gz 
 <br> After running downloading them please run the following bash command in your cwd and replace files1-4 names with your locally downloaded file names
