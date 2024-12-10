@@ -1,4 +1,4 @@
-# BioE131FinalProject
+# BioE131FinalProject Mario Camacho , Arman Meysami Tabriz, Janice Le
 Step 1: Setup your AWS account, please refer to the instructions listed on Lab 8 on how to setup your AWS account. <br> 
 
 Step 2: Setup Jbrowse according to the instructions listed on Lab 8. Work up until step 3.6  <br> 
@@ -158,8 +158,32 @@ jbrowse add-track 2016EboVirSequence_sorted.gff.gz --out $APACHE_ROOT/jbrowse2 -
 jbrowse text-index --out $APACHE_ROOT/jbrowse2
 ```
 
-<br> Create a Multiple Sequence Alignment using MAFFT
-
+<br> Create a Multiple Sequence Alignment using MAFFT 
+<br> Refer to the instructions listed on the MAFFT website on how to setup and use MAFFT : https://mafft.cbrc.jp/alignment/software/
+<br> For our case, we used the all in one windows version : https://mafft.cbrc.jp/alignment/software/windows_without_cygwin.html    
+<br> but download the one compatible with your operating system
+<br> This step was done locally on a windows computer but it can be done on aws and other operating systems according to the instructions given in the provided link
+<br> the following instructions assumes you have downloaded the all in one version
+<br> Download the genome data locally to your computer using the following links:
+<br> ftp://hgdownload.soe.ucsc.edu/goldenPath/eboVir3/bigZips/KM034562v1.fa.gz
+<br> ralProj14703/GCF_000848505.1_ViralProj14703_genomic.fna.gz 
+<br> https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/034/098/425/GCA_034098425.1_ASM3409842v1/GCA_034098425.1_ASM3409842v1_genomic.fna.gz
+<br> https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/900/094/155/GCA_900094155.1_ASM90009415v1/GCA_900094155.1_ASM90009415v1_genomic.fna.gz 
+<br> After running downloading them please run the following bash command in your cwd and replace files1-4 names with your locally downloaded file names
+```bash
+gunzip file1.fasta.gz
+gunzip file2.fasta.gz
+gunzip file3.fasta.gz
+gunzip file4.fasta.gz
+```
+<br> After this step you should have 4 fasta files
+<br> Combine the fasta files into one file:
+```bash
+cat file1.fasta file2.fasta file3.fasta file4.fasta > combined.fasta
+```
+<br> Unzip the MAFFT folder
+<br> Copy the combined.fasta file into the win-MAFFT folder
+<br> Run the MAFFT file in the folder and input the combined.fasta file as your input file to allign the sequences.
 
 
 
