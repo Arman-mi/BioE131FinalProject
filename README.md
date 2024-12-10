@@ -1,37 +1,34 @@
 # BioE131FinalProject
-step 1: setup you AWS account. please refer to the instructions listed on Lab 8 on how to setup your AWS account. <br> 
-step 2: setup Jbrowse according to the instructions listed on Lab 8.  <br> 
-please verify that JBrowse is installed using the following bash command: --version Jbrowse <br>
-run jbrowse --help to check the following packages and commands are installed <br>
-wget: For downloading genome and annotation files. <br>
-samtools: For indexing genome files. <br>
-minimap2: For sequence alignment. <br>
-JBrowse CLI: For adding assemblies and tracks.<br>
+Step 1: Setup your AWS account, please refer to the instructions listed on Lab 8 on how to setup your AWS account. <br> 
+Step 2: Setup Jbrowse according to the instructions listed on Lab 8. Work up until step 3.6  <br> 
+please verify that JBrowse is installed using the following bash command: <br>
+--version Jbrowse <br>
+Step 3 : Ensure AWS enviroment is set up by running the following command : <br>
+export APACHE_ROOT=/var/www/html <br>
+Step 4: Run the following command to ensure you are working with the proper permissions : <br>
+sudo chown -R $(whoami) $APACHE_ROOT/jbrowse2 <br>
+Step 5: Run the following command to ensure tools and packages are all up to date: <br>
+sudo apt upgrade
 
-step 3 : Ensure AWS enviroment is set up by running the following command : export APACHE_ROOT=/var/www/html <br>
-step 4: make sure ubuntu has the correct permissions : sudo chown -R $(whoami) $APACHE_ROOT/jbrowse2 <br>
-requried tools : <br>
-verify the following tools are installed: <br>
 
-wget: For downloading genome and annotation files. <br>
-samtools: For indexing genome files. <br>
-minimap2: For sequence alignment. <br>
-JBrowse CLI: For adding assemblies and tracks. <br>
+
+<br>General procedure: 
+<br>(please note viral_genome is a place holder and you must plug in your file name for the following steps)
+<br>Step 6: Use the following command to download the sequence into AWS: <br>
+wget -O {Enter the name of your output file} {Enter the download link to your file}
+<br>Step 7: Decompress the genome sequence file you just downloaded using the command:
+<br> gunzip {Name of the compressed sequence file}
+<br>Step 8: Index the genome file:
+<br> samtools faidx {name of the file you just decompressed}
+<br>Step 9: Add annotations to your sequence:
+<br> wget -O annotations.bed.gz {Download link to annotation file}
+<br>Step 10: Decompress the annotations file you just downloaded
+<br> gunzip {Name of the compressed annotations file}
+<br>Step 11: 
 <br>
-by running the following commands: <br>
-wget --version <br>
-samtools --version <br>
-minimap2 --version <br>
-jbrowse --version <br>
+<br>
+<br>
 
-<br> (please note viral_genome is a place holder and you must plug in your file name for the following steps)
-<br>step 5: using the wget -O command we will download the gene
-<br>step 6 : then we wil ldecompres the .gz file using "gunzip viral_genome.fna.gz" 
-<br>step 7 : index the genome file using samtools with the following bash command: samtools faidx viral_genome.fna
-<br>step 8 : add the file to the Jbrowse : jbrowse add-assembly viral_genome.fna --out $APACHE_ROOT/jbrowse2 --load copy
-<br>to add anotations for the genes use the following commands: 
-<br>step 9 : wget -O annotations.bed.gz <put link here>
-<br>step 10: decompress and prepare the BED file
 <br>gunzip filoviridae_annotations.bed.gz
 <br>jbrowse sort-bed filoviridae_annotations.bed > sorted.bed
 <br>bgzip sorted.bed
