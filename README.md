@@ -57,11 +57,17 @@ jbrowse add-assembly viral_genome.fna --out $APACHE_ROOT/jbrowse2 --load copy
 
 
 
+2000EboVirSequence: 
+wget -O 2000EboVirSequence.fna.gz https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/848/505/GCF_000848505.1_ViralProj14703/GCF_000848505.1_ViralProj14703_genomic.fna.gz 
+gunzip 2000EboVirSequence.fna.gz
+samtools faidx 2000EboVirSequence.fna
+jbrowse add-assembly 2000EboVirSequence.fna --out $APACHE_ROOT/jbrowse2 --load copy
 
-viral genome anotations: 
-wget -O viral_genome_annotations.gff3.gz https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/848/505/GCF_000848505.1_ViralProj14703/GCF_000848505.1_ViralProj14703_genomic.gff.gz 
-gunzip viral_genome_annotations.gff3.gz
-jbrowse sort-gff viral_genome_annotations.gff3 > genes.gff
+
+2000EboVirSequence anotations: 
+wget -O 2000EboVirSequence_annotations.gff3.gz https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/848/505/GCF_000848505.1_ViralProj14703/GCF_000848505.1_ViralProj14703_genomic.gff.gz 
+gunzip 2000EboVirSequence_annotations.gff3.gz
+jbrowse sort-gff 2000EboVirSequence_annotations.gff3 > genes.gff
 bgzip genes.gff
 tabix genes.gff.gz
 jbrowse add-track genes.gff.gz --out $APACHE_ROOT/jbrowse2 --load copy
@@ -69,22 +75,24 @@ Add —force
 jbrowse text-index --out $APACHE_ROOT/jbrowse2
 
 
+2014EboVirSequence : 
+wget -O 2014EboVirSequence.fna.gz ftp://hgdownload.soe.ucsc.edu/goldenPath/eboVir3/bigZips/KM034562v1.fa.gz
+gunzip 2014EboVirSequence.fna.gz
+samtools faidx 2014EboVirSequence.fna
 
 
-to add an additional assembly : 
-wget -O filoviridae_genome.fna.gz ftp://hgdownload.soe.ucsc.edu/goldenPath/eboVir3/bigZips/KM034562v1.fa.gz
-gunzip filoviridae_genome.fna.gz
-samtools faidx filoviridae_genome.fna
 
-
-annotations for bed files : 
-wget -O filoviridae_annotations.bed usegalaxy.org.au/api/datasets/a6e389a98c2d16789414434a46f1f1ba/display?to_ext=bed
-jbrowse sort-bed filoviridae_annotations.bed > sorted.bed
+annotations for  2014EboVirSequence : 
+wget -O 2014EboVirSequence_annotations.bed usegalaxy.org.au/api/datasets/a6e389a98c2d16789414434a46f1f1ba/display?to_ext=bed
+jbrowse sort-bed 2014EboVirSequence_annotations.bed > sorted.bed
 bgzip sorted.bed
 tabix sorted.bed.gz
 jbrowse add-track sorted.bed.gz --out $APACHE_ROOT/jbrowse2 --load copy --assemblyNames 2014.fna
 jbrowse text-index --out $APACHE_ROOT/jbrowse2 
-jbrowse text-index --assemblyNames filoviridae_genome --out indexed.bed --file sorted2.bed
+jbrowse text-index --assemblyNames 2014EboVirSequence_genome --out indexed.bed --file sorted2.bed
+
+
+
 
 
 to add ICTV figure 4A:
@@ -93,39 +101,43 @@ https://www.hiv.lanl.gov/cgi-bin/FORMAT_CONVERSION/convert.cgi.gz
 ftp://ictv.global/sites/default/files/report_files/Filo_Fig4.v3.CG_alignment.TXT
 Format converter: Download (https://www.hiv.lanl.gov/cgi-bin/FORMAT_CONVERSION/convert.cgi)
 
-to add the GenBank : ASM3409842v1
-wget -O genbank_g2.fna.gz https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/034/098/425/GCA_034098425.1_ASM3409842v1/GCA_034098425.1_ASM3409842v1_genomic.fna.gz
-gunzip genbank_g2.fna.gz
-samtools faidx genbank_g2.fna
-jbrowse add-assembly  genbank_g2.fna --out $APACHE_ROOT/jbrowse2 --load copy
 
-adding anotations for : ASM3409842v1
-wget -O g2_annotations.gff3.gz https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/034/098/425/GCA_034098425.1_ASM3409842v1/GCA_034098425.1_ASM3409842v1_genomic.gff.gz 
-gunzip g2_annotations.gff3.gz
-jbrowse sort-gff g2_annotations.gff3 > g2_sorted.gff
-bgzip g2_sorted.gff
-tabix g2_sorted.gff.gz
-jbrowse add-track g2_sorted.gff.gz --out $APACHE_ROOT/jbrowse2 --load copy --assemblyNames 2015.fna
+
+
+to add the GenBank : ASM3409842v1 ( 2015EboVirSequence)
+wget -O  2015EboVirSequence.fna.gz https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/034/098/425/GCA_034098425.1_ASM3409842v1/GCA_034098425.1_ASM3409842v1_genomic.fna.gz
+gunzip  2015EboVirSequence.fna.gz
+samtools faidx  2015EboVirSequence.fna
+jbrowse add-assembly   2015EboVirSequence.fna --out $APACHE_ROOT/jbrowse2 --load copy
+
+adding anotations for : ASM3409842v1 ( 2015EboVirSequence)
+wget -O  2015EboVirSequence_annotations.gff3.gz https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/034/098/425/GCA_034098425.1_ASM3409842v1/GCA_034098425.1_ASM3409842v1_genomic.gff.gz 
+gunzip  2015EboVirSequence_annotations.gff3.gz
+jbrowse sort-gff  2015EboVirSequence_annotations.gff3 >  2015EboVirSequence_sorted.gff
+bgzip  2015EboVirSequence_sorted.gff
+tabix  2015EboVirSequence_sorted.gff.gz
+jbrowse add-track  2015EboVirSequence_sorted.gff.gz --out $APACHE_ROOT/jbrowse2 --load copy --assemblyNames  2015EboVirSequence_anotated.fna
 jbrowse text-index --out $APACHE_ROOT/jbrowse2
 
-adding GenBank: ASM90009415v1
-wget -O gca3.fna.gz https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/900/094/155/GCA_900094155.1_ASM90009415v1/GCA_900094155.1_ASM90009415v1_genomic.fna.gz 
-gunzip gca3.fna.gz 
-samtools faidx gca3.fna
-jbrowse add-assembly  gca3.fna --out $APACHE_ROOT/jbrowse2 --load copy
+adding GenBank: ASM90009415v1 (2016EboVirSequence)
+wget -O 2016EboVirSequence.fna.gz https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/900/094/155/GCA_900094155.1_ASM90009415v1/GCA_900094155.1_ASM90009415v1_genomic.fna.gz 
+gunzip 2016EboVirSequence.fna.gz 
+samtools faidx 2016EboVirSequence.fna
+jbrowse add-assembly  2016EboVirSequence.fna --out $APACHE_ROOT/jbrowse2 --load copy
 
 Adding annotations for ASM90009415v1
-wget -O gca3_annotations.gff3.gz https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/900/094/155/GCA_900094155.1_ASM90009415v1/GCA_900094155.1_ASM90009415v1_genomic.gff.gz
-gunzip gca3_annotations.gff3.gz
-jbrowse sort-gff gca3_annotations.gff3 > gca3_sorted.gff
-bgzip gca3_sorted.gff
-tabix gca3_sorted.gff.gz
-jbrowse add-track gca3_sorted.gff.gz --out $APACHE_ROOT/jbrowse2 --load copy --assemblyNames 2016.fna
+wget -O 2016EboVirSequence_annotations.gff3.gz https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/900/094/155/GCA_900094155.1_ASM90009415v1/GCA_900094155.1_ASM90009415v1_genomic.gff.gz
+gunzip 2016EboVirSequence_annotations.gff3.gz
+jbrowse sort-gff 2016EboVirSequence_annotations.gff3 > 2016EboVirSequence_sorted.gff
+bgzip 2016EboVirSequence_sorted.gff
+tabix 2016EboVirSequence_sorted.gff.gz
+jbrowse add-track 2016EboVirSequence_sorted.gff.gz --out $APACHE_ROOT/jbrowse2 --load copy --assemblyNames 2016EboVirSequenceAnotated.fna
 jbrowse text-index --out $APACHE_ROOT/jbrowse2
 
 
 
-wget -O viral_genome.fna.gz https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/848/505/GCF_000848505.1_ViralProj14703/GCF_000848505.1_ViralProj14703_genomic.fna.gz 
+
+
 
 
 
